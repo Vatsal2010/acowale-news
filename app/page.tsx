@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-// TypeScript interfaces for API response
 interface NewsResponse {
   totalArticles: number;
   articles: Article[];
@@ -26,21 +25,29 @@ interface Source {
 export default function NewsCards() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const apikey = '246552eb269025713c3b2eea76a63964'; // Replace with your GNews API Key
-  const url = `https://gnews.io/api/v4/search?q=example&lang=en&country=us&max=10&apikey=${apikey}`;
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [fetchUrl, setFetchUrl] = useState<string>(`/api/search?query=example`); // Default query
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data: NewsResponse) => {
+    const fetchArticles = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(fetchUrl);
+        const data: NewsResponse = await response.json();
         setArticles(data.articles);
-        setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching news:", error);
+      } finally {
         setLoading(false);
-      });
-  }, [url]);
+      }
+    };
+
+    fetchArticles();
+  }, [fetchUrl]);
+
+  const handleSearch = () => {
+    setFetchUrl(`/api/search?query=${encodeURIComponent(searchTerm)}`);
+  };
 
   if (loading) {
     return <div className="text-center py-20 text-lg">Loading...</div>;
@@ -67,6 +74,16 @@ export default function NewsCards() {
                   Technology
                 </a>
               </div>
+            </div>
+            <div className="flex items-center">
+              <input
+                type="text"
+                placeholder="Search news..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="border border-gray-300 rounded-md p-2"
+              />
+              <button onClick={handleSearch} className="ml-2 bg-blue-600 text-white px-4 py-2 rounded-md">Search</button>
             </div>
           </div>
         </div>
