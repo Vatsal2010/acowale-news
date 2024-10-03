@@ -56,21 +56,21 @@ export default function NewsCards() {
   return (
     <div>
       {/* Navbar */}
-      <nav className="bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+      <nav className="bg-black border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
-              <a href="/" className="flex-shrink-0 text-2xl font-bold text-gray-800 dark:text-white">
+              <a href="/" className="flex-shrink-0 text-2xl font-bold text-black dark:text-white">
                 Acowale News
               </a>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                <a href="#" className="border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                <a href="#" className="border-b-2 border-transparent text-black hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
                   Home
                 </a>
-                <a href="#" className="border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                <a href="#" className="border-b-2 border-transparent text-black hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
                   World
                 </a>
-                <a href="#" className="border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
+                <a href="#" className="border-b-2 border-transparent text-black hover:border-gray-300 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">
                   Technology
                 </a>
               </div>
@@ -91,7 +91,7 @@ export default function NewsCards() {
 
       {/* News Cards */}
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-8 text-center">Latest News</h1>
+        <h1 className="text-3xl font-extrabold text-black dark:text-white mb-8 text-center">Latest News</h1>
         <div className="grid lg:grid-cols-2 lg:gap-y-16 gap-10">
           {articles.map((article, index) => (
             <a key={index} className="group block rounded-xl overflow-hidden focus:outline-none" href={article.url} target="_blank" rel="noopener noreferrer">
@@ -107,10 +107,10 @@ export default function NewsCards() {
                   />
                 </div>
                 <div className="grow">
-                  <h3 className="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-neutral-300 dark:group-hover:text-white">
+                  <h3 className="text-xl font-semibold text-gray-600 group-hover:text-black">
                     {article.title}
                   </h3>
-                  <p className="mt-3 text-gray-600 dark:text-neutral-400">
+                  <p className="mt-3 text-black dark:text-neutral-400">
                     {article.description}
                   </p>
                   <p className="mt-4 inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 group-hover:underline group-focus:underline font-medium dark:text-blue-500">
